@@ -11,10 +11,15 @@ const scoreboard = document.querySelector("#scoreboard");
 
 const playerScore = document.querySelector("#playerScore");
 const computerScore = document.querySelector("#computerScore");
+const cpuMove = document.querySelector("#cpuMove");
 
 function updateScores(p, c) {
-  playerScore.textContent=p;
-  computerScore.textContent=c;
+  playerScore.textContent=`You: ${p}`;
+  computerScore.textContent=`Me: ${c}`;
+}
+
+function updateCpuMove(cM) {
+  cpuMove.textContent=`I pick ${cM}`;
 }
 
 function rngMaybe(min, max) {
@@ -64,6 +69,7 @@ function playRound(playerChoice, computerChoice) {
     ++playerWins;
     console.log(`you win! ${playerChoice} beats ${computerChoice}! the score is ${playerWins} to ${computerWins}`);
   }
+  updateCpuMove(computerChoice);
   updateScores(playerWins, computerWins);
   if (playerWins == 5) {
     alert("you won!");
