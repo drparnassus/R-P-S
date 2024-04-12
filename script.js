@@ -10,6 +10,7 @@ const scoreboard = document.querySelector("#scoreboard");
 const playerScore = document.querySelector("#playerScore");
 const computerScore = document.querySelector("#computerScore");
 const cpuMove = document.querySelector("#cpuMove");
+const roundResultDisplay = document.querySelector("#roundResultDisplay");
 
 function updateScores(p, c) {
   playerScore.textContent=`You: ${p}`;
@@ -23,7 +24,6 @@ function updateCpuMove(cM) {
     cpuMove.textContent = `I pick ${cM}`;
   }
 }
-
 
 function rngMaybe(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -59,18 +59,32 @@ function getPLayerSelection() {
   }
 }
 
+function updateResultDisplay(a,b,c) {
+  if (c==1) {
+    roundResultDisplay.textContent = `You pick ${a}. You win`;
+  }
+  else if (c==2) {
+    roundResultDisplay.textContent = `You pick ${a}. You lose`;
+  }
+  else if (c==0) {
+    roundResultDisplay.textContent = `You pick ${a}. It's a tie`;
+  }
+}
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice == computerChoice) {
-    console.log(`it's a tie! the score is ${playerWins} to ${computerWins}`);
+    updateResultDisplay(playerChoice, computerChoice, 0);
+    //console.log(`it's a tie! the score is ${playerWins} to ${computerWins}`);
   }
   else if ((playerChoice == rock && computerChoice == paper) || (playerChoice == paper && computerChoice == scissors) || (playerChoice == scissors && computerChoice == rock)) {
     ++computerWins;
-    console.log(`you lose! ${computerChoice} beats ${playerChoice}! the score is ${playerWins} to ${computerWins}`);
+    updateResultDisplay(playerChoice, computerChoice, 2);
+    //console.log(`you lose! ${computerChoice} beats ${playerChoice}! the score is ${playerWins} to ${computerWins}`);
   }
   else {
     ++playerWins;
-    console.log(`you win! ${playerChoice} beats ${computerChoice}! the score is ${playerWins} to ${computerWins}`);
+    updateResultDisplay(playerChoice, computerChoice, 1);
+    //console.log(`you win! ${playerChoice} beats ${computerChoice}! the score is ${playerWins} to ${computerWins}`);
   }
   updateCpuMove(computerChoice);
   updateScores(playerWins, computerWins);

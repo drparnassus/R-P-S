@@ -10,10 +10,31 @@ body {
     height: 100vh;
     justify-content: center;
     gap: 100px;
+    align-items: center;
 }
 
+#rpsGame {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    border: 1vh solid;
+    padding: 5vh;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;   
+    max-width: 50vw; /* Adjust the maximum width as needed */
+    width: 90%;
+    height: auto;
+    position: relative;
+    overflow: auto;
+}
 
-#btnBox, #cpuMove {
+@media (max-width: 768px) {
+    #rpsGame {
+        padding: 10%; /* Adjust padding for smaller screens */
+        box-shadow: 0px 0px 0px 0px, 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px;  
+    }
+}
+
+#btnBox, #cpuMove, #roundResultDisplay {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -29,7 +50,7 @@ body {
     margin: 0 auto;
 }
 
-#btnRock, #btnPaper, #btnScissors, #scoreboard, #cpuMove {
+#btnRock, #btnPaper, #btnScissors, #scoreboard, #cpuMove, #roundResultDisplay {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     letter-spacing: 2px;
@@ -49,6 +70,7 @@ body {
     box-shadow: 0px 0px 0px 0px;
     top: 5px;
     left: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 
 @media (min-width: 768px) {
