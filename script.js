@@ -5,7 +5,17 @@ const scissors = "scissors";
 let playerWins = 0;
 let computerWins = 0;
 
+const scoreboard = document.querySelector("#scoreboard");
+//scoreboard.style.cssText = "color: yellow; background: black; textAlign: center; font-size: 40px;";
+//scoreboard.style.padding = "10px";
 
+const playerScore = document.querySelector("#playerScore");
+const computerScore = document.querySelector("#computerScore");
+
+function updateScores(p, c) {
+  playerScore.textContent=p;
+  computerScore.textContent=c;
+}
 
 function rngMaybe(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -44,15 +54,22 @@ function getPLayerSelection() {
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice == computerChoice) {
-    return `it's a tie! the score is ${playerWins} to ${computerWins}`;
+    console.log(`it's a tie! the score is ${playerWins} to ${computerWins}`);
   }
   else if ((playerChoice == rock && computerChoice == paper) || (playerChoice == paper && computerChoice == scissors) || (playerChoice == scissors && computerChoice == rock)) {
     ++computerWins;
-    return `you lose! ${computerChoice} beats ${playerChoice}! the score is ${playerWins} to ${computerWins}`;
+    console.log(`you lose! ${computerChoice} beats ${playerChoice}! the score is ${playerWins} to ${computerWins}`);
   }
   else {
     ++playerWins;
-    return `you win! ${playerChoice} beats ${computerChoice}! the score is ${playerWins} to ${computerWins}`
+    console.log(`you win! ${playerChoice} beats ${computerChoice}! the score is ${playerWins} to ${computerWins}`);
+  }
+  updateScores(playerWins, computerWins);
+  if (playerWins == 5) {
+    alert("you won!");
+  }
+  else if (computerWins == 5) {
+    alert("you lost!");
   }
 }
 
@@ -61,7 +78,7 @@ rButton.addEventListener("click", function() {
   const pChoice = rock;
   console.log("You chose rock!");
   const cpuChoice = getComputerChoice();
-  console.log(playRound(pChoice, cpuChoice));
+  playRound(pChoice, cpuChoice);
 });
 
 const pButton = document.querySelector("#btnPaper");
@@ -69,7 +86,7 @@ pButton.addEventListener("click", function() {
   const pChoice = paper;
   console.log("You chose paper!");
   const cpuChoice = getComputerChoice();
-  console.log(playRound(pChoice, cpuChoice));
+  playRound(pChoice, cpuChoice);
 });
 
 const sButton = document.querySelector("#btnScissors");
@@ -77,8 +94,9 @@ sButton.addEventListener("click", function() {
   const pChoice = scissors;
   console.log("You chose scissors!");
   const cpuChoice = getComputerChoice();
-  console.log(playRound(pChoice, cpuChoice));
+  playRound(pChoice, cpuChoice);
 });
 //console.log(playRound(getPLayerSelection(),getComputerChoice()));
+
 
 
