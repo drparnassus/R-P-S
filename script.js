@@ -19,8 +19,13 @@ function updateScores(p, c) {
 }
 
 function updateCpuMove(cM) {
-  cpuMove.textContent=`I pick ${cM}`;
+  if (cM.toLowerCase() === 'play a best of 5?') {
+    cpuMove.textContent = cM;
+  } else {
+    cpuMove.textContent = `I pick ${cM}`;
+  }
 }
+
 
 function rngMaybe(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -73,9 +78,17 @@ function playRound(playerChoice, computerChoice) {
   updateScores(playerWins, computerWins);
   if (playerWins == 5) {
     alert("you won!");
+    updateScores(0, 0);
+    playerWins = 0;
+    computerWins = 0;
+    updateCpuMove("play a best of 5?");
   }
   else if (computerWins == 5) {
     alert("you lost!");
+    updateScores(0, 0);
+    playerWins = 0;
+    computerWins = 0;
+    cpuMove.textContent="play a best of 5?";
   }
 }
 
