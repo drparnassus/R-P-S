@@ -6,8 +6,6 @@ let playerWins = 0;
 let computerWins = 0;
 
 const scoreboard = document.querySelector("#scoreboard");
-//scoreboard.style.cssText = "color: yellow; background: black; textAlign: center; font-size: 40px;";
-//scoreboard.style.padding = "10px";
 
 const playerScore = document.querySelector("#playerScore");
 const computerScore = document.querySelector("#computerScore");
