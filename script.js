@@ -12,6 +12,10 @@ const computerScore = document.querySelector("#computerScore");
 const cpuMove = document.querySelector("#cpuMove");
 const roundResultDisplay = document.querySelector("#roundResultDisplay");
 
+function endGame(result) {
+  alert(`You ${result}!`)
+}
+
 function updateScores(p, c) {
   playerScore.textContent=`You: ${p}`;
   computerScore.textContent=`Me: ${c}`;
@@ -89,18 +93,22 @@ function playRound(playerChoice, computerChoice) {
   updateCpuMove(computerChoice);
   updateScores(playerWins, computerWins);
   if (playerWins == 5) {
-    alert("you won!");
     updateScores(0, 0);
+    setTimeout(() => {
+      endGame(won = "won");
+    }, 10); // Delaying the alert slightly to ensure UI updates first
+    updateCpuMove("play a best of 5?");
     playerWins = 0;
     computerWins = 0;
-    updateCpuMove("play a best of 5?");
   }
   else if (computerWins == 5) {
-    alert("you lost!");
     updateScores(0, 0);
+    setTimeout(() => {
+      endGame(lost = "lost");
+    }, 10); // Delaying the alert slightly to ensure UI updates first
+    cpuMove.textContent="play a best of 5?";
     playerWins = 0;
     computerWins = 0;
-    cpuMove.textContent="play a best of 5?";
   }
 }
 
@@ -128,6 +136,5 @@ sButton.addEventListener("click", function() {
   playRound(pChoice, cpuChoice);
 });
 //console.log(playRound(getPLayerSelection(),getComputerChoice()));
-
 
 

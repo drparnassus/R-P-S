@@ -16,12 +16,13 @@ body {
 #rpsGame {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 5vh;
     border: 1vh solid;
-    padding: 5vh;
+    padding: 1em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;   
     max-width: 50vw; /* Adjust the maximum width as needed */
-    width: 90%;
+    width: auto;
     height: auto;
     position: relative;
     overflow: auto;
@@ -29,17 +30,22 @@ body {
 
 @media (max-width: 768px) {
     #rpsGame {
-        padding: 10%; /* Adjust padding for smaller screens */
-        box-shadow: 0px 0px 0px 0px, 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px;  
+        padding: 4%; /* Adjust padding for smaller screens */
+        box-shadow: 1px 1px 0px 0px, 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px;  
+        max-width: 80vw; /* Adjust the maximum width as needed */
+        min-width: 80vw;
+        height: auto;
+    
     }
 }
 
 #btnBox, #cpuMove, #roundResultDisplay {
     display: flex;
-    gap: 10px;
+    gap: 1em;
     justify-content: center;
     width: fit-content;
     margin: 0 auto;
+    padding: .1em;
 }
 
 #scoreboard{
@@ -52,14 +58,15 @@ body {
 
 #btnRock, #btnPaper, #btnScissors, #scoreboard, #cpuMove, #roundResultDisplay {
     font-family: "Open Sans", sans-serif;
-    font-size: 16px;
+    font-size: .7em;
+    font-weight: 900;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
     color: #000;
     cursor: pointer;
     border: 3px solid;
-    padding: 0.25em 0.5em;
+    padding: .1em .1em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
     position: relative;
     user-select: none;
@@ -81,4 +88,18 @@ body {
 
 #btnRock:hover, #btnPaper:hover, #btnScissors:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+#cpuMove, #roundResultDisplay, #scoreboard {
+    padding: .5em;
+}
+
+/*@media (min-width: 333px) {
+    #btnRock, #btnPaper, #btnScissors, #scoreboard, #cpuMove, #roundResultDisplay  {
+        
+    }
+}*/
+
+#btnBox {
+    flex-wrap: wrap;
 }
